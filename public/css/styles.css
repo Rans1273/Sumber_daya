@@ -1,0 +1,307 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+/* Header dan Footer */
+header, footer {
+    background-color: #167266;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.header{
+    display: flex;
+    padding-left: 50px;
+    padding-right: 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+.header .instasi{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.header .instasi img{
+    height: 70px;
+    width: auto;
+}
+
+
+
+.navbar .nav{
+    display: flex;
+    gap: 10px;
+}
+
+.navbar .nav li{
+    list-style: none;
+}
+
+.navbar .nav li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Navigasi Bar */
+.navigasibar {
+    display: flex;
+    justify-content: center;
+    padding: 0px 0;
+}
+
+.navigasibar .nav {
+    list-style: none;
+    display: flex;
+    font-size: 13px;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+.navigasibar .nav li {
+    position: relative;
+}
+
+.navigasibar .nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    display: block;
+}
+
+/* Dropdown Menu*/
+.navigasibar .nav .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #209d8c;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+}
+
+.nav .dropdown-menu li a {
+    padding: 5px 12px;
+    white-space: nowrap;
+    color: white;
+}
+
+.nav .dropdown-menu li a:hover {
+    background-color: #125b53;
+}
+
+/* Hover to show submenu*/
+.nav .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Main dan Content */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.content {
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content .container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+}
+
+
+
+
+
+
+
+
+
+/* Home Page */
+.home {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-image: url(../img/image.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    gap: 10px;
+}
+.home .judul h1{
+    color: #167266;
+}
+.home .judul h2 {
+    margin: 10px 0;
+    color: #555;
+}
+
+.home .search{
+    padding: 5px;
+    width: 600px;
+    background-color: white;
+    border-radius: 100px;
+    overflow: hidden;
+}
+.home .search input{
+    box-sizing: border-box;
+    border: none;
+    padding: 10px;
+    width: 89%;
+    height: 30px;
+}
+.home .search button{
+    box-sizing: border-box;
+    width: 10%;
+    height: 30px;
+    border-radius: 100px;
+}
+
+
+.home .featured {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+    margin-top: 20px;
+}
+.feature-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eaf7f5;
+    width: 400px;
+    height: 200px;
+    padding: 15px;
+    margin-bottom: -110px;
+    border: 1px solid #cce7e3;
+    border-radius: 5px;
+}
+
+
+
+/* About Page */
+.about-wrapper {
+    text-align: center;
+}
+.about-title {
+    font-size: 26px;
+    color: #167266;
+}
+.about-description {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Contact Page */
+.contact-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.contact-title {
+    font-size: 26px;
+    color: #167266;
+    text-align: center;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+.contact-form label {
+    font-weight: bold;
+}
+.contact-form input, 
+.contact-form textarea {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.contact-form textarea {
+    height: 100px;
+    resize: none;
+}
+.contact-form button {
+    background-color: #167266;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.contact-form button:hover {
+    background-color: #125b53;
+}
+
+
+
+
+
+.content .container .table{
+    width: 100%;
+    padding: 20px;
+}
+.content .container table{
+    border-collapse: collapse; 
+    width: 100%;
+}
+
+.content .container table thead{
+    background-color: #ff2c2c; 
+    text-align: center;
+}
+
+.content .container table tbody{
+    background-color: #d8d8d8; 
+    text-align: center;
+}
