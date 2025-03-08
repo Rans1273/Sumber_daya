@@ -11,7 +11,7 @@
         </div>
         <div class="search">
             <input type="text" placeholder="Search...">
-            <button>search puki</button>
+            <button>search</button>
         </div>
         <div class="featured">
             <div class="feature-box">Fitur 1</div>
