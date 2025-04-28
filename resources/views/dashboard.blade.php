@@ -94,6 +94,42 @@
                         </div>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="card h-100 bg-secondary text-white">
+                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <div class="card-body">
+                            <h5 class="card-title">Ekonomi Bulungan</h5>
+                            <p class="card-text">Ekonomi dari Bulungan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 bg-secondary text-white">
+                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <div class="card-body">
+                            <h5 class="card-title">Ekonomi Bulungan</h5>
+                            <p class="card-text">Ekonomi dari Bulungan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 bg-secondary text-white">
+                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <div class="card-body">
+                            <h5 class="card-title">Ekonomi Bulungan</h5>
+                            <p class="card-text">Ekonomi dari Bulungan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 bg-secondary text-white">
+                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <div class="card-body">
+                            <h5 class="card-title">Ekonomi Bulungan</h5>
+                            <p class="card-text">Ekonomi dari Bulungan.</p>
+                        </div>
+                    </div>
+                </div>
                 <!-- ... -->
             </div>
             <div class="text-center mt-4">
