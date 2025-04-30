@@ -31,14 +31,14 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Section -->
     <div class="container-fluid text-center bg-secondary py-5">
         <h1 class="display-4 fw-bold">jelajahi statistik data bulungan</h1>
         <p class="lead">Visualisasi data dari ribuan sumber</p>
         <img src="img/image.png" class="img-fluid my-3" alt="Peta" />
     </div>
 
-    <!-- Feature Section -->
+    <!-- Section -->
     <section class="bg-light text-dark py-5">
         <div class="container text-center">
             <h2>Telusuri lebih dari ribuan data</h2>
@@ -52,13 +52,13 @@
         </div>
     </section>
 
-    <!-- Popular Reports Section -->
+    <!-- Section -->
     <section class="bg-dark py-5">
         <div class="container">
             <h3 class="text-center mb-4">Laporan populer terbaru</h3>
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
                 <!-- Ulangi kartu ini -->
-                <a href="{{ Route('sajiandata')}}" class="col text-decoration-none">
+                <a href="#" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/image.png" class="card-img-top" alt="" />
                         <div class="card-body">
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 </a>
-                <!-- ... -->
+                <!------->
             </div>
             <div class="text-center mt-4">
                 <button class="btn btn-outline-light">Lihat Semua Laporan</button>
@@ -138,7 +138,7 @@
         </div>
     </section>
 
-    <!-- Visualization Tools -->
+    <!-- Tools -->
     <section class="bg-light text-dark py-5">
         <div class="container text-center">
             <h3>Grafik Sumberdaya Bulungan.</h3>
