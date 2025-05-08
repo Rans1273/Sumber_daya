@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/tebel', function () {
+    return view('contohtabel');
+})->name('tabel');
 
 
 
