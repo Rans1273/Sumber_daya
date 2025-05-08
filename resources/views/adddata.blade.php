@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="id">
 
 <head>
@@ -12,11 +12,12 @@
     <div class="container my-5">
         <h2 class="mb-4 text-center">Tambah Data Perkebunan</h2>
 
-        <!-- Form Manual -->
+        <!-- Form Tambah Manual -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">Tambah Data Perkebunan</div>
             <div class="card-body text-dark">
-                <form action="proses_tambah.php" method="POST">
+                <form action="{{ route('perkebunan.store') }}" method="POST">
+                    @csrf
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="kecamatan" class="form-label">Kecamatan</label>
@@ -52,11 +53,12 @@
             </div>
         </div>
 
-        <!-- Upload CSV -->
+        <!-- Form Upload CSV -->
         <div class="card">
             <div class="card-header bg-success text-white">Upload CSV</div>
             <div class="card-body text-dark">
-                <form action="upload_csv.php" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('perkebunan.uploadCSV') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-3">
                         <label for="csv_file" class="form-label">Pilih file CSV</label>
                         <input class="form-control" type="file" name="csv_file" id="csv_file" accept=".csv" required>

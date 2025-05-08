@@ -55,7 +55,7 @@
             <h3 class="text-center mb-4">LAPORAN POPULER TERBARU</h3>
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
                 <!-- Ulangi kartu ini -->
-                <a href="{{ route('tabel') }}" class="col text-decoration-none">
+                <a href="{{ route('perkebunan.index') }}" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/image.png" class="card-img-top" alt="" />
                         <div class="card-body">

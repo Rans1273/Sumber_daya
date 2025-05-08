@@ -14,35 +14,38 @@
         <div class="card mb-4">
             <div class="card-header bg-success text-white">Update Data Perkebunan</div>
             <div class="card-body text-dark">
-                <form action="proses_tambah.php" method="POST">
+                <!-- Form Update -->
+                <form action="{{ route('perkebunan.update', $data->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="kecamatan" class="form-label">Kecamatan</label>
-                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" required>
+                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{ old('kecamatan', $data->kecamatan) }}" required>
                         </div>
                         <div class="col-md-6">
                             <label for="kelapa" class="form-label">Kelapa (ton)</label>
-                            <input type="number" class="form-control" id="kelapa" name="kelapa" required>
+                            <input type="number" class="form-control" id="kelapa" name="kelapa" value="{{ old('kelapa', $data->kelapa) }}" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="kopi" class="form-label">Kopi (ton)</label>
-                            <input type="number" class="form-control" id="kopi" name="kopi" required>
+                            <input type="number" class="form-control" id="kopi" name="kopi" value="{{ old('kopi', $data->kopi) }}" required>
                         </div>
                         <div class="col-md-6">
                             <label for="kakao" class="form-label">Kakao (ton)</label>
-                            <input type="number" class="form-control" id="kakao" name="kakao" required>
+                            <input type="number" class="form-control" id="kakao" name="kakao" value="{{ old('kakao', $data->kakao) }}" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="tebu" class="form-label">Tebu (ton)</label>
-                            <input type="number" class="form-control" id="tebu" name="tebu" required>
+                            <input type="number" class="form-control" id="tebu" name="tebu" value="{{ old('tebu', $data->tebu) }}" required>
                         </div>
                         <div class="col-md-6">
                             <label for="tembakau" class="form-label">Tembakau (ton)</label>
-                            <input type="number" class="form-control" id="tembakau" name="tembakau" required>
+                            <input type="number" class="form-control" id="tembakau" name="tembakau" value="{{ old('tembakau', $data->tembakau) }}" required>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success">Update Data</button>
