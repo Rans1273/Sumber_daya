@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashbaord</title>
+    <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
@@ -32,7 +32,7 @@
 
             <!-- section -->
             <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
-                <h1 class="fw-bold display-5">JELAJAHI STATISTIK DATA BULINGAN</h1>
+                <h1 class="fw-bold display-5">JELAJAHI STATISTIK DATA BULUNGAN</h1>
                 <p class="lead">CARI BERDASARKAN KOTA, INDUSTRI, UNIVERSITAS, DAN LAINNYA</p>
                 <div
                     class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start align-items-center gap-3 mb-3">
