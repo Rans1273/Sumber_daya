@@ -22,6 +22,14 @@ Route::get('/tebel', function () {
     return view('contohtabel');
 })->name('tabel');
 
+Route::get('/add', function () {
+    return view('adddata');
+})->name('add');
+
+Route::get('/up', function () {
+    return view('editdata');
+})->name('up');
+
 
 
 
