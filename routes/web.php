@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PerkebunanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +20,17 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/tebel', function () {
-    return view('contohtabel');
-})->name('tabel');
+Route::get('/perkebunan', [PerkebunanController::class, 'index'])->name('perkebunan.index');
+Route::get('/perkebunan/create', [PerkebunanController::class, 'create'])->name('perkebunan.create');
+Route::post('/perkebunan/store', [PerkebunanController::class, 'store'])->name('perkebunan.store');
+Route::post('/perkebunan/upload-csv', [PerkebunanController::class, 'uploadCSV'])->name('perkebunan.uploadCSV');
+Route::get('/perkebunan/{id}/edit', [PerkebunanController::class, 'edit'])->name('perkebunan.edit');
+Route::put('/perkebunan/{id}', [PerkebunanController::class, 'update'])->name('perkebunan.update');
+Route::delete('/perkebunan/{id}', [PerkebunanController::class, 'destroy'])->name('perkebunan.destroy');
 
-Route::get('/add', function () {
-    return view('adddata');
-})->name('add');
 
-Route::get('/up', function () {
-    return view('editdata');
-})->name('up');
+
+
 
 
 
@@ -38,7 +40,7 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/contact', function () {
+Route::get('/contact',  function () {
     return view('contact');
 })->name('contact');
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashbaord</title>
+    <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
@@ -32,7 +32,7 @@
 
             <!-- section -->
             <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
-                <h1 class="fw-bold display-5">JELAJAHI STATISTIK DATA BULINGAN</h1>
+                <h1 class="fw-bold display-5">JELAJAHI STATISTIK DATA BULUNGAN</h1>
                 <p class="lead">CARI BERDASARKAN KOTA, INDUSTRI, UNIVERSITAS, DAN LAINNYA</p>
                 <div
                     class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start align-items-center gap-3 mb-3">
@@ -55,7 +55,7 @@
             <h3 class="text-center mb-4">LAPORAN POPULER TERBARU</h3>
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
                 <!-- Ulangi kartu ini -->
-                <a href="{{ route('tabel') }}" class="col text-decoration-none">
+                <a href="{{ route('perkebunan.index') }}" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/image.png" class="card-img-top" alt="" />
                         <div class="card-body">
