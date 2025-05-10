@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.layout')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Produksi Pertanian</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
+@section('title', 'Data - SDA Bulungan')
 
+@section('content')
 <body class="bg-dark text-white" style="font-family: Arial, sans-serif;">
     <div class="container my-5">
         <h2 class="mb-4 text-center">Data Statistik Produksi Perkebunan</h2>
@@ -20,11 +15,11 @@
                     <select name="column" class="form-select" required>
                         <option value="">Pilih Kolom</option>
                         <option value="kecamatan" {{ request('column') == 'kecamatan' ? 'selected' : '' }}>Kecamatan</option>
-                        <option value="kelapa" {{ request('column') == 'kelapa' ? 'selected' : '' }}>Kelapa</option>
-                        <option value="kopi" {{ request('column') == 'kopi' ? 'selected' : '' }}>Kopi</option>
-                        <option value="kakao" {{ request('column') == 'kakao' ? 'selected' : '' }}>Kakao</option>
-                        <option value="tebu" {{ request('column') == 'tebu' ? 'selected' : '' }}>Tebu</option>
-                        <option value="tembakau" {{ request('column') == 'tembakau' ? 'selected' : '' }}>Tembakau</option>
+                        <option value="kelapa" {{ request('column') == 'kelapa' ? 'selected' : '' }}>Kelapa(Ton)</option>
+                        <option value="kopi" {{ request('column') == 'kopi' ? 'selected' : '' }}>Kopi(Ton)</option>
+                        <option value="kakao" {{ request('column') == 'kakao' ? 'selected' : '' }}>Kakao(Ton)</option>
+                        <option value="tebu" {{ request('column') == 'tebu' ? 'selected' : '' }}>Tebu(Ton)</option>
+                        <option value="tembakau" {{ request('column') == 'tembakau' ? 'selected' : '' }}>Tembakau(Ton)</option>
                     </select>
 
                     <!-- Input Pencarian -->
@@ -83,4 +78,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-</html>
+@endsection

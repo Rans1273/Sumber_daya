@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Edit Data</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
+@extends('layouts.layout')
 
+@section('title', 'Update - SDA Bulungan')
+
+@section('content')
 <body class="bg-dark text-white" style="font-family: Arial, sans-serif;">
     <div class="container my-5">
         <h2 class="mb-4 text-center">Update Data Perkebunan</h2>
@@ -49,6 +45,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success">Update Data</button>
+                    <a href="{{ route('perkebunan.index') }}" class="btn btn-secondary ml-2">Batalkan</a>
                 </form>
             </div>
         </div>
@@ -57,4 +54,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-</html>
+
+@endsection

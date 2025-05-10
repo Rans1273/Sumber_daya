@@ -1,13 +1,8 @@
-<!DOCTYPE html> 
-<html lang="id">
+@extends('layouts.layout')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tambah Data</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
+@section('title', 'Add - SDA Bulungan')
 
+@section('content')
 <body class="bg-dark text-white" style="font-family: Arial, sans-serif;">
     <div class="container my-5">
         <h2 class="mb-4 text-center">Tambah Data Perkebunan</h2>
@@ -68,9 +63,11 @@
                 </form>
             </div>
         </div>
+        <a href="{{ route('perkebunan.index') }}" class="btn btn-danger mt-3 shadow-sm border-2 border-secondary px-4 py-2">Batalkan</a>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-</html>
+@endsection
