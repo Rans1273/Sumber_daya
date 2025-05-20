@@ -47,7 +47,6 @@
                 </form>
             </div>
         </div>
-        
 
         <!-- Form Upload CSV -->
         <div class="card">
