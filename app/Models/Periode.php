@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Periode extends Model
+{
+    protected $fillable = ['tahun', 'triwulan'];
+
+    public function produksiPerkebunan()
+    {
+        return $this->hasMany(ProduksiPerkebunan::class);
+    }
+}

@@ -4,34 +4,34 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\ProduksiPerkebunan;
+use App\Models\Kecamatan;
+use App\Models\JenisTanaman;
+use App\Models\Periode;
+
+
 
 class ProduksiPerkebunanSeeder extends Seeder
 {
     public function run()
-    {
-        $kecamatan = [
-            'Tanjung Palas', 
-            'Tanjung Palas Tengah', 
-            'Tanjung Palas Timur', 
-            'Tanjung Palas Barat', 
-            'Tanjung Palas Hulu', 
-            'Tanjung Selor', 
-            'Sekatak', 
-            'Bunyu', 
-            'Peso' // Tanpa "Tanjung Palas Utara"
-        ];
+{
+    $kecamatans = Kecamatan::all();
+    $periodes = Periode::all();
+    $tanamans = JenisTanaman::all();
 
-        foreach ($kecamatan as $nama) {
-            DB::table('produksi_perkebunan')->insert([
-                'kecamatan' => $nama,
-                'kelapa' => rand(100, 1000),
-                'kopi' => rand(100, 1000),
-                'kakao' => rand(100, 1000),
-                'tebu' => rand(100, 1000),
-                'tembakau' => rand(100, 1000),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+    foreach ($periodes as $periode) {
+        foreach ($kecamatans as $kecamatan) {
+            foreach ($tanamans as $tanaman) {
+                ProduksiPerkebunan::create([
+                    'kecamatan_id' => $kecamatan->id,
+                    'periode_id' => $periode->id,
+                    'jenis_tanaman_id' => $tanaman->id,
+                    'produksi_ton' => rand(0, 200),
+                ]);
+            }
         }
     }
 }
+
+}
+		

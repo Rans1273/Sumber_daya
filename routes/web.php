@@ -26,7 +26,7 @@ Route::post('/perkebunan/store', [PerkebunanController::class, 'store'])->name('
 Route::post('/perkebunan/upload-csv', [PerkebunanController::class, 'uploadCSV'])->name('perkebunan.uploadCSV');
 Route::get('/perkebunan/{id}/edit', [PerkebunanController::class, 'edit'])->name('perkebunan.edit');
 Route::put('/perkebunan/{id}', [PerkebunanController::class, 'update'])->name('perkebunan.update');
-Route::delete('/perkebunan/{id}', [PerkebunanController::class, 'destroy'])->name('perkebunan.destroy');
+Route::delete('/perkebunan/{kecamatan_id}/{periode_id}', [PerkebunanController::class, 'destroy'])->name('perkebunan.destroy');
 
 
 
