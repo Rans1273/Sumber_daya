@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.dashboard_layout')
 
 @section('title', 'Add - SDA Bulungan')
 
@@ -72,11 +72,11 @@
                     <input type="number" class="form-control" id="tembakau" name="produksi[tembakau]" value="{{ old('produksi.tembakau') }}" required>
                 </div>
 
-                <button type="submit" class="btn btn-success">Simpan Data</button>
+                <button type="submit" class="btn btn-success shadow-sm border-2 border-secondary px-4 py-2 flex-fill">Simpan Data</button>
+                <a href="{{ route('perkebunan.index') }}" class="btn btn-danger shadow-sm border-2 border-secondary px-4 py-2 flex-fill">Batalkan</a>
             </form>
         </div>
     </div>
 
-    <a href="{{ route('perkebunan.index') }}" class="btn btn-danger mt-3 shadow-sm border-2 border-secondary px-4 py-2">Batalkan</a>
 </div>
 @endsection

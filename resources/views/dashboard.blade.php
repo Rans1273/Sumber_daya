@@ -27,7 +27,6 @@
         </div>
     </div>
 
-
     <!-- Section -->
     <section class="py-5 text-white" style="background-color: #002c04;">
         <div class="container">
@@ -36,16 +35,16 @@
                 <!-- Ulangi kartu ini -->
                 <a href="{{ route('perkebunan.index') }}" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
-                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <img src="img/sumberdaya/perkebunan.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
-                            <h5 class="card-title">EKONOMI BULUNGAN</h5>
-                            <p class="card-text">EKONOMI DARI BULUNGAN</p>
+                            <h5 class="card-title">PERKEBUNAN BULUNGAN</h5>
+                            <p class="card-text">PERKEBUNAN DARI BULUNGAN</p>
                         </div>
                     </div>
                 </a>
                 <a href="#" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
-                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <img src="img/sumberdaya/sumber air.jpg" class="card-img-top" alt="" />
                         <div class="card-body ">
                             <h5 class="card-title">EKONOMI BULUNGAN</h5>
                             <p class="card-text">EKONOMI DARI BULUNGAN</p>
@@ -54,7 +53,7 @@
                 </a>
                 <a href="#" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
-                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <img src="img/sumberdaya/tambang.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
                             <h5 class="card-title">EKONOMI BULUNGAN</h5>
                             <p class="card-text">EKONOMI DARI BULUNGAN</p>
@@ -63,7 +62,7 @@
                 </a>
                 <a href="#" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
-                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <img src="img/sumberdaya/embung.jpeg" class="card-img-top" alt="" />
                         <div class="card-body">
                             <h5 class="card-title">EKONOMI BULUNGAN</h5>
                             <p class="card-text">EKONOMI DARI BULUNGAN</p>
@@ -72,7 +71,7 @@
                 </a>
                 <a href="#" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
-                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <img src="img/sumberdaya/kayu_bulat.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
                             <h5 class="card-title">EKONOMI BULUNGAN</h5>
                             <p class="card-text">EKONOMI DARI BULUNGAN</p>
@@ -81,7 +80,7 @@
                 </a>
                 <a href="#" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
-                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <img src="img/sumberdaya/produksi_susu.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
                             <h5 class="card-title">EKONOMI BULUNGAN</h5>
                             <p class="card-text">EKONOMI DARI BULUNGAN</p>
@@ -90,7 +89,7 @@
                 </a>
                 <a href="#" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
-                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <img src="img/sumberdaya/hewan_unggas.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
                             <h5 class="card-title">EKONOMI BULUNGAN</h5>
                             <p class="card-text">EKONOMI DARI BULUNGAN</p>
@@ -99,7 +98,7 @@
                 </a>
                 <a href="#" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
-                        <img src="img/image.png" class="card-img-top" alt="" />
+                        <img src="img/sumberdaya/produksi_daging.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
                             <h5 class="card-title">EKONOMI BULUNGAN</h5>
                             <p class="card-text">EKONOMI DARI BULUNGAN</p>

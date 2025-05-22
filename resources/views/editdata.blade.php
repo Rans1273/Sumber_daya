@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.dashboard_layout')
 
 @section('title', 'Update - SDA Bulungan')
 

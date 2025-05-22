@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.dashboard_layout')
 
 @section('title', 'Data - SDA Bulungan')
 
@@ -10,7 +10,7 @@
             <div class="d-flex flex-column flex-md-row align-items-center gap-2">
                 <a href="{{ route('perkebunan.create') }}" class="btn btn-success">+ Tambah</a>
                 
-                 {{-- Dropdown Kolom --}}
+                {{-- Dropdown Kolom --}}
                 <form id="searchForm" class="d-flex gap-2" method="GET" action="{{ route('perkebunan.index') }}">
                     <select name="column" class="form-select" required onchange="this.form.submit()">
                         <option value="">Pilih Kolom</option>
