@@ -6,13 +6,16 @@
 <body class="bg-dark text-white" style="font-family: Arial, sans-serif;">
 
     <!-- Section -->
-    <div class="container-fluid bg-secondary text-white min-vh-100 d-flex align-items-center">
+    <div class="container-fluid text-white min-vh-100 d-flex align-items-center"
+        style="background-image: url('img/image/pegunungan.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;">
         <div class="row w-100 align-items-center justify-content-center px-3">
-
             <!-- section -->
             <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
-                <h1 class="fw-bold display-5">JELAJAHI STATISTIK DATA BULUNGAN</h1>
-                <p class="lead">CARI BERDASARKAN KOTA, INDUSTRI, UNIVERSITAS, DAN LAINNYA</p>
+                <h1 class="fw-bold display-5"style="font-size: 60px;">JELAJAHI STATISTIK DATA BULUNGAN</h1>
+                <p class="lead" style="font-size: 16px;">CARI BERDASARKAN KOTA, INDUSTRI, UNIVERSITAS, DAN LAINNYA</p>
                 <div
                     class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start align-items-center gap-3 mb-3">
                     <a href="#" class="btn btn-outline-light">LIHAT DATA GEOGRAFIS</a>
@@ -22,7 +25,7 @@
             </div>
             <!-- section -->
             <div class="col-lg-6 text-center">
-                <img src="img/image.png" class="img-fluid my-3" alt="Peta" style="max-height: 450px;">
+                <img src="img/image/peta.png" class="img-fluid my-3" alt="Peta" style="max-height: 500px;">
             </div>
         </div>
     </div>
