@@ -7,6 +7,8 @@ use App\Models\JenisTanaman;
 use App\Models\Periode;
 use App\Models\ProduksiPerkebunan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;         
+
 
 class PerkebunanController extends Controller
 {
@@ -14,7 +16,7 @@ class PerkebunanController extends Controller
     {
         $query = ProduksiPerkebunan::with(['kecamatan', 'jenisTanaman', 'periode']);
 
-        // Tambahkan filter jika form dikirim
+        // --- BAGIAN FILTER ---
         if ($request->filled('column') && $request->filled('search')) {
             $column = $request->input('column');
             $search = $request->input('search');
@@ -32,46 +34,76 @@ class PerkebunanController extends Controller
                     $q->where('triwulan', 'like', '%' . $search . '%');
                 });
             } else {
-                // Filter berdasarkan jenis tanaman (kelapa, kopi, dll)
                 $query->whereHas('jenisTanaman', function ($q) use ($column) {
-                    $q->whereRaw('LOWER(nama) = ?', [strtolower($column)]);
+                    $q->where(function($subQuery) use ($column){
+                        $subQuery->whereRaw('LOWER(REPLACE(nama, " ", "_")) = ?', [$column])
+                                 ->orWhereRaw('LOWER(nama) = ?', [$column]);
+                    });
                 })->where('produksi_ton', 'like', '%' . $search . '%');
             }
         }
 
-        $data = $query->get();
+        $data = $query->orderBy('periode_id')->orderBy('kecamatan_id')->get(); // Tambahkan order by jika perlu
+        $semuaJenisTanamanModels = JenisTanaman::orderBy('nama')->get();
+        $namaTanamansDinamis = $semuaJenisTanamanModels->map(function ($tanaman) {
+            return Str::slug($tanaman->nama, '_'); 
+        })->unique()->values()->all();
 
-        // Kelompokkan berdasarkan kombinasi kecamatan + periode
+
         $grouped = $data->groupBy(function ($item) {
             return $item->kecamatan_id . '-' . $item->periode_id;
         });
 
         $results = [];
 
-        foreach ($grouped as $group) {
-            $first = $group->first();
-            $row = [
-                'kecamatan' => $first->kecamatan->nama ?? '-',
-                'tahun' => $first->periode->tahun ?? '-',
-                'triwulan' => $first->periode->triwulan ?? '-',
-                'produksi' => [],
-                'id' => $first->id,
-                'kecamatan_id' => $first->kecamatan_id,
-                'periode_id' => $first->periode_id,
-            ];
-
-
-            foreach ($group as $item) {
-                $row['produksi'][strtolower($item->jenisTanaman->nama)] = $item->produksi_ton;
+        foreach ($grouped as $groupKey => $groupItems) {
+            $firstItem = $groupItems->first();
+            if (!$firstItem) { 
+                continue;
             }
 
+            $row = [
+                'kecamatan' => $firstItem->kecamatan->nama ?? '-',
+                'tahun' => $firstItem->periode->tahun ?? '-',
+                'triwulan' => $firstItem->periode->triwulan ?? '-',
+                'produksi' => [], 
+                'id' => $firstItem->id,
+                'kecamatan_id' => $firstItem->kecamatan_id,
+                'periode_id' => $firstItem->periode_id,
+            ];
+            foreach ($namaTanamansDinamis as $namaTanamanKey) {
+                $row['produksi'][$namaTanamanKey] = '-'; // Nilai default jika tidak ada produksi
+            }
+
+            foreach ($groupItems as $item) {
+                if ($item->jenisTanaman && $item->jenisTanaman->nama) {
+                    $namaTanamanSaatIniKey = Str::slug($item->jenisTanaman->nama, '_');
+                    if (array_key_exists($namaTanamanSaatIniKey, $row['produksi'])) {
+                        $row['produksi'][$namaTanamanSaatIniKey] = $item->produksi_ton;
+                    }
+                }
+            }
             $results[] = $row;
         }
 
-        $kecamatanList = Kecamatan::pluck('nama')->unique();
-        $tahunList = Periode::pluck('tahun')->unique();
-        $triwulanList = Periode::pluck('triwulan')->unique();
-        return view('contohtabel', compact('results', 'kecamatanList', 'tahunList', 'triwulanList'));
+        $kecamatanList = Kecamatan::orderBy('nama')->pluck('nama', 'nama')->all(); // Menggunakan nama sebagai value & key
+        $tahunList = Periode::distinct()->orderBy('tahun', 'desc')->pluck('tahun', 'tahun')->all();
+        $triwulanList = Periode::distinct()->orderBy('triwulan')->pluck('triwulan', 'triwulan')->all();
+
+        $cropTypesForFilter = $semuaJenisTanamanModels->mapWithKeys(function ($tanaman) {
+            $value = Str::slug($tanaman->nama, '_'); // 'kelapa_sawit'
+            $displayName = $tanaman->nama;          // 'Kelapa Sawit'
+            return [$value => $displayName];
+        })->all();
+
+        return view('contohtabel', compact( 
+            'results', 
+            'kecamatanList',
+            'tahunList',
+            'triwulanList',
+            'namaTanamansDinamis', 
+            'cropTypesForFilter'   
+        ));
     }
 
 
