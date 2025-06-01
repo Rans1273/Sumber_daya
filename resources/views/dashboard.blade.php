@@ -141,7 +141,7 @@
             <h3>GRAFIK SUMBERDAYA BULUNGAN</h3>
             <div class="row justify-content-center align-items-center mt-4">
                 <div class="col-md-6">
-                    <img src="img/image.png" class="img-fluid" alt="" />
+                    <img src="img/image1.jpg" class="img-fluid" alt="" />
                 </div>
                 <div class="col-md-6 text-start">
                     <h5>PEMBUATAN VISUALISAI</h5>
