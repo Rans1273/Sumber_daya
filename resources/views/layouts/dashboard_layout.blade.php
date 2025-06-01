@@ -31,7 +31,7 @@
         <div class="row">
 
             <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-dark text-white sidebar py-4 border-end border-secondary">
+            <nav class="col-md-3 col-lg-2 d-md-block bg-dark text-white sidebar py-4 border-end border-secondary" style="height: 100vh; overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none;">
                 <div class="position-sticky">
                     <ul class="nav flex-column px-3">
 
@@ -263,6 +263,7 @@
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                                 data-bs-toggle="collapse" data-bs-target="#pemberdayaan-perempuan-dan-perlindungan-anak" aria-expanded="false">
                                 Dinas Pemberdayaan Perempuan dan Perlindungan Anak
+                            </button>
                             <div class="collapse ps-3" id="pemberdayaan-perempuan-dan-perlindungan-anak">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
@@ -276,6 +277,7 @@
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                                 data-bs-toggle="collapse" data-bs-target="#peternakan" aria-expanded="false">
                                 Dinas Peternakan
+                            </button>
                             <div class="collapse ps-3" id="peternakan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
@@ -289,6 +291,7 @@
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                                 data-bs-toggle="collapse" data-bs-target="#perikanan" aria-expanded="false">
                                 Dinas Perikanan
+                            </button>
                             <div class="collapse ps-3" id="perikanan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
@@ -302,6 +305,7 @@
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                                 data-bs-toggle="collapse" data-bs-target="#perhubungan" aria-expanded="false">
                                 Dinas Perhubungan
+                            </button>
                             <div class="collapse ps-3" id="perhubungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
@@ -315,6 +319,7 @@
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                                 data-bs-toggle="collapse" data-bs-target="#peneneman-modal-dan-perizinan" aria-expanded="false">
                                 Dinas Penanaman Modal dan Perizinan
+                            </button>
                             <div class="collapse ps-3" id="peneneman-modal-dan-perizinan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
@@ -328,6 +333,7 @@
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                                 data-bs-toggle="collapse" data-bs-target="#satpol-pp-dan-limnas" aria-expanded="false">
                                 Satuan Polisi Pamong Praja dan Perlindungan Masyarakat (Satpol PP dan Linmas)
+                            </button>
                             <div class="collapse ps-3" id="satpol-pp-dan-limnas">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
@@ -340,7 +346,8 @@
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                                 data-bs-toggle="collapse" data-bs-target="#p2p" aria-expanded="false">
-                                Pusat Pelayanan Publik (P2P)
+                                Pusat Pelayanan Publik (P2P)
+                            </button>
                             <div class="collapse ps-3" id="p2p">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
