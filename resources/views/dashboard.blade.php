@@ -14,14 +14,33 @@
         <div class="row w-100 align-items-center justify-content-center px-3">
             <!-- section -->
             <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
-                <h1 class="fw-bold display-5"style="font-size: 60px;">JELAJAHI STATISTIK DATA BULUNGAN</h1>
+                <h1 class="fw-bold display-5" style="font-size: 60px;">
+                    JELAJAHI STATISTIK DATA 
+                    <span id="typing" style="border-right: 2px solid white; white-space: nowrap; overflow: hidden; display: inline-block; vertical-align: bottom; font-family: inherit; animation: blink 0.7s step-end infinite;"></span>
+                </h1>
                 <p class="lead" style="font-size: 16px;">CARI BERDASARKAN KOTA, INDUSTRI, UNIVERSITAS, DAN LAINNYA</p>
-                <div
-                    class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start align-items-center gap-3 mb-3">
+                <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start align-items-center gap-3 mb-3">
                     <a href="#" class="btn btn-outline-light">LIHAT DATA GEOGRAFIS</a>
                     <a href="#" class="btn btn-outline-light">LIHAT DATA PEKERJAAN</a>
                     <a href="#" class="btn btn-outline-light">LIHAT DATA BUDIDAYA</a>
                 </div>
+                <style>
+                    @keyframes blink { 50% { border-color: transparent; } }
+                </style>
+                <script>
+                    const text = "BULUNGAN";
+                    const el = document.getElementById("typing");
+                    let i = 0, del = false;
+                    function type() {
+                        el.textContent = text.substring(0, i);
+                        if (!del && i <= text.length) { i++; }
+                        else if (del && i >= 0) { i--; }
+                        if (i > text.length) { del = true; setTimeout(type, 1000); }
+                        else if (i < 0) { del = false; setTimeout(type, 700); }
+                        else setTimeout(type, del ? 100 : 150);
+                    }
+                    document.addEventListener("DOMContentLoaded", type);
+                </script>
             </div>
             <!-- section -->
             <div class="col-lg-6 text-center">
