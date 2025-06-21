@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GeneratorController;
 use App\Http\Controllers\PerkebunanController;
 
 
@@ -19,6 +20,12 @@ use App\Http\Controllers\PerkebunanController;
 Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::prefix('generator')->name('generator.')->group(function () {
+    Route::get('/table', [GeneratorController::class, 'showTableGenerator'])->name('table.show');
+    Route::post('/table', [GeneratorController::class, 'generateTable'])->name('table.generate');
+});
+
 
 Route::get('/perkebunan', [PerkebunanController::class, 'index'])->name('perkebunan.index');
 Route::get('/perkebunan/create', [PerkebunanController::class, 'create'])->name('perkebunan.create');
