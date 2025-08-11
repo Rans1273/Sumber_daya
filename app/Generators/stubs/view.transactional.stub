@@ -1,0 +1,46 @@
+@extends('layouts.dashboard_layout')
+
+@section('content')
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Tabel {{title}}</h1>
+    <p class="mb-4">Manajemen data untuk {{title}}.</p>
+    
+    {{-- TODO: Tambahkan form filter di sini --}}
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a href="{{ route('{{routeName}}.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah Data</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            {!! $tableHeaders !!}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($records as $record)
+                        <tr>
+                            {!! $tableBody !!}
+                            <td>
+                                <a href="{{ route('{{routeName}}.edit', $record->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <form action="{{ route('{{routeName}}.destroy', $record->id) }}" method="POST" style="display:inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin?')">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="{{colspan}}" class="text-center">Data tidak ditemukan.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection 

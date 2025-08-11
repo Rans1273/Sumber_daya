@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+{{useStatements}}
+use Illuminate\Http\Request;
+
+class {{controllerName}} extends Controller
+{
+    public function index()
+    {
+        // TODO: Implementasikan logika pivot data di sini jika diperlukan.
+        // Untuk saat ini, menampilkan data mentah dengan relasi.
+        $records = {{modelName}}::with([{{withRelations}}])->latest()->paginate(15);
+        return view('{{viewPath}}', compact('records'));
+    }
+
+    public function create()
+    {
+        // Ambil data dari tabel master untuk dropdown di form
+        // Contoh: $kecamatans = Kecamatan::all();
+        return view('{{viewPath}}.create', compact([{{compactsForForms}}]));
+    }
+
+    public function store(Request $request)
+    {
+        // TODO: Sesuaikan validasi dengan form Anda
+        {{modelName}}::create($request->all());
+        return redirect()->route('{{routeName}}.index')->with('success', 'Data berhasil dibuat.');
+    }
+
+    public function edit($id)
+    {
+        $record = {{modelName}}::findOrFail($id);
+        // Ambil data dari tabel master untuk dropdown di form
+        // Contoh: $kecamatans = Kecamatan::all();
+        return view('{{viewPath}}.edit', compact('record', {{compactsForForms}}));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $record = {{modelName}}::findOrFail($id);
+        $record->update($request->all());
+        return redirect()->route('{{routeName}}.index')->with('success', 'Data berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        // Note: Ini menghapus per baris. Untuk hapus per grup, perlu logika kustom.
+        {{modelName}}::destroy($id);
+        return redirect()->route('{{routeName}}.index')->with('success', 'Data berhasil dihapus.');
+    }
+}

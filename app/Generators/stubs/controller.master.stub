@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Http\Controllers;
+
+{{useStatements}}
+use Illuminate\Http\Request;
+
+class {{controllerName}} extends Controller
+{
+    public function index()
+    {
+        $records = {{modelName}}::latest()->paginate(10);
+        return view('{{viewPath}}', compact('records'));
+    }
+
+    public function create()
+    {
+        return view('{{viewPath}}.create');
+    }
+
+    public function store(Request $request)
+    {
+        // Tambahkan validasi sesuai kebutuhan
+        {{modelName}}::create($request->all());
+        return redirect()->route('{{routeName}}.index')->with('success', 'Data berhasil dibuat.');
+    }
+
+    public function edit($id)
+    {
+        $record = {{modelName}}::findOrFail($id);
+        return view('{{viewPath}}.edit', compact('record'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $record = {{modelName}}::findOrFail($id);
+        $record->update($request->all());
+        return redirect()->route('{{routeName}}.index')->with('success', 'Data berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        {{modelName}}::destroy($id);
+        return redirect()->route('{{routeName}}.index')->with('success', 'Data berhasil dihapus.');
+    }
+}
