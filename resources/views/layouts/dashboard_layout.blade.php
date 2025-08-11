@@ -38,8 +38,8 @@
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#sek-dprd-bulungan" aria-expanded="false">
-                                Sekretariat DPRD Kabupaten Bulungan
+                                data-bs-toggle="collapse" data-bs-target="#DPMPTSP" aria-expanded="false">
+                                Kepala DPMPTSP Provinsi Kalimantan Utara di Tanjung Selor 
                             </button>
                             <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -48,312 +48,149 @@
                             </div>
                         </li>
 
-                        <li class="nav-item mt-2">
+                        <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#insektorat" aria-expanded="false">
-                                Inspektorat
+                                data-bs-toggle="collapse" data-bs-target="#ESDM" aria-expanded="false">
+                                Kepala ESDM Provinsi Kalimantan Utara di Tanjung Selor 
                             </button>
-                            <div class="collapse ps-3" id="insektorat">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 3 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#bappeda" aria-expanded="false">
-                                Badan Perencanaan Pembangunan Daerah (Bappeda) dan Penelitian Pengembangan
+                                data-bs-toggle="collapse" data-bs-target="#KEHUTANAN" aria-expanded="false">
+                                Kepala Dinas Kehutanan Provinsi Kalimantan Utara di Tanjung Selor
                             </button>
-                            <div class="collapse ps-3" id="bappeda">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">Data</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 4 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#bkad" aria-expanded="false">
-                                Badan Keuangan dan Aset Daerah (BKAD)
-                            </button>
-                            <div class="collapse ps-3" id="bkad">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 5 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#dinas-pendidikan" aria-expanded="false">
-                                Dinas Pendidikan
+                                data-bs-toggle="collapse" data-bs-target="#PUPR" aria-expanded="false">
+                                Kepala DPUPR Kabupaten Bulungan di Tanjung Selor
                             </button>
-                            <div class="collapse ps-3" id="dinas-pendidikan">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 6 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#dinas-kesehatan" aria-expanded="false">
-                                Dinas Kesehatan
+                                data-bs-toggle="collapse" data-bs-target="#DPMPTSP" aria-expanded="false">
+                                Kepala DPMPTSP Kabupaten Bulungan di Tanjung Selor
                             </button>
-                            <div class="collapse ps-3" id="dinas-kesehatan">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 7 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#dinas-pertania" aria-expanded="false">
-                                Dinas Pertanian
+                                data-bs-toggle="collapse" data-bs-target="#PERTANIAN" aria-expanded="false">
+                                Kepala Dinas Pertanian Kabupaten Bulungan di Tanjung Selor
                             </button>
-                            <div class="collapse ps-3" id="dinas-pertania">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="{{ route('perkebunan.index')}}" class="nav-link text-white">Data Statistik Produksi Perkebunan</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 8 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#pupr" aria-expanded="false">
-                                Dinas Pekerjaan Umum dan Penataan Ruang
-                            </button>
-                            <div class="collapse ps-3" id="pupr">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 9 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#dinas-sosial" aria-expanded="false">
-                                Dinas Sosial
+                                data-bs-toggle="collapse" data-bs-target="#PERIKANAN" aria-expanded="false">
+                                Kepala Dinas Perikanan Kabupaten Bulungan di Tanjung Selor
                             </button>
-                            <div class="collapse ps-3" id="dinas-sosial">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 10 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#komunikasi-informatika" aria-expanded="false">
-                                Dinas Komunikasi dan Informatika
+                                data-bs-toggle="collapse" data-bs-target="#DISKOPERINDAG" aria-expanded="false">
+                                Kepala DISKOPERINDAG Kabupaten Bulungan di Tanjung Selor
                             </button>
-                            <div class="collapse ps-3" id="komunikasi-informatika">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 11 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#dlh" aria-expanded="false">
-                                Dinas Lingkungan Hidup
+                                data-bs-toggle="collapse" data-bs-target="#PANGAN" aria-expanded="false">
+                                Kepala Dinas Ketahanan Pangan Kabupaten Bulungan di Tanjung Selor
                             </button>
-                            <div class="collapse ps-3" id="dlh">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 12 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#kelistrikan-dan-SD-mineral" aria-expanded="false">
-                                Dinas Ketenagalistrikan dan Sumber Daya Mineral
+                                data-bs-toggle="collapse" data-bs-target="#Transmigrasi_Tenaga_Kerja" aria-expanded="false">
+                                Kepala Dinas Transmigrasi & Tenaga Kerja Kabupaten Bulungan di Tanjung Selor                          
                             </button>
-                            <div class="collapse ps-3" id="kelistrikan-dan-SD-mineral">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 13 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#koperasi-dan-usaha-kecil-menengah" aria-expanded="false">
-                                Dinas Koperasi dan Usaha Kecil Menengah
+                                data-bs-toggle="collapse" data-bs-target="#Olahraga_dan_pariwisata" aria-expanded="false">
+                                Kepala Dinas Pemuda Olahraga dan Pariwisata Kabupaten Bulungan di Tanjung Selor                          
                             </button>
-                            <div class="collapse ps-3" id="koperasi-dan-usaha-kecil-menengah">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 14 -->
                         <li class="nav-item">
                             <button
                                 class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#pariwisata" aria-expanded="false">
-                                Dinas Pariwisata
+                                data-bs-toggle="collapse" data-bs-target="#LH" aria-expanded="false">
+                                Kepala Dinas Lingkungan Hidup Kabupaten Bulungan di Tanjung Selor                        
                             </button>
-                            <div class="collapse ps-3" id="pariwisata">
+                            <div class="collapse ps-3" id="sek-dprd-bulungan">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="#" class="nav-link text-white">data</a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- 15 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#pemuda-dan-olahraga" aria-expanded="false">
-                                Dinas Pemuda dan Olahraga
-                            </button>
-                            <div class="collapse ps-3" id="pemuda-dan-olahraga">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">data</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 16 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#perpustakaan-dan-kearsipan" aria-expanded="false">
-                                Dinas Perpustakaan dan Kearsipan
-                            </button>
-                            <div class="collapse ps-3" id="perpustakaan-dan-kearsipan">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">data</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 17 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#pemberdayaan-perempuan-dan-perlindungan-anak" aria-expanded="false">
-                                Dinas Pemberdayaan Perempuan dan Perlindungan Anak
-                            </button>
-                            <div class="collapse ps-3" id="pemberdayaan-perempuan-dan-perlindungan-anak">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">data</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 18 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#peternakan" aria-expanded="false">
-                                Dinas Peternakan
-                            </button>
-                            <div class="collapse ps-3" id="peternakan">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">data</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 19 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#perikanan" aria-expanded="false">
-                                Dinas Perikanan
-                            </button>
-                            <div class="collapse ps-3" id="perikanan">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">data</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 20 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#perhubungan" aria-expanded="false">
-                                Dinas Perhubungan
-                            </button>
-                            <div class="collapse ps-3" id="perhubungan">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">data</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 21 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#peneneman-modal-dan-perizinan" aria-expanded="false">
-                                Dinas Penanaman Modal dan Perizinan
-                            </button>
-                            <div class="collapse ps-3" id="peneneman-modal-dan-perizinan">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">data</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 22 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#satpol-pp-dan-limnas" aria-expanded="false">
-                                Satuan Polisi Pamong Praja dan Perlindungan Masyarakat (Satpol PP dan Linmas)
-                            </button>
-                            <div class="collapse ps-3" id="satpol-pp-dan-limnas">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">data</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- 23 -->
-                        <li class="nav-item">
-                            <button
-                                class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
-                                data-bs-toggle="collapse" data-bs-target="#p2p" aria-expanded="false">
-                                Pusat Pelayanan Publik (P2P)
-                            </button>
-                            <div class="collapse ps-3" id="p2p">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="nav-link text-white">data</a></li>
-                                </ul>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </nav>
