@@ -44,3 +44,7 @@ Route::get('/perkebunan/{id}/edit', [PerkebunanController::class, 'edit'])->name
 Route::put('/perkebunan/{id}', [PerkebunanController::class, 'update'])->name('perkebunan.update');
 Route::delete('/perkebunan/{kecamatan_id}/{periode_id}', [PerkebunanController::class, 'destroy'])->name('perkebunan.destroy');
 
+
+Route::get('/1', function () {
+    return view('auth.login');
+})->name('auth.login');

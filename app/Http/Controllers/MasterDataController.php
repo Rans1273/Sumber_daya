@@ -79,11 +79,11 @@ class MasterDataController extends Controller
             $modelClass::create($data);
 
             return redirect()->route('master-data.index', ['table' => $table])
-                             ->with('success', 'Data berhasil ditambahkan.');
+                            ->with('success', 'Data berhasil ditambahkan.');
 
         } catch (Exception $e) {
             return redirect()->route('master-data.index', ['table' => $table])
-                             ->withErrors('Gagal menyimpan data: ' . $e->getMessage());
+                            ->withErrors('Gagal menyimpan data: ' . $e->getMessage());
         }
     }
 
