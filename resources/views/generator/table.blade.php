@@ -5,59 +5,62 @@
 
     <h1 class="h3 mb-4 text-gray-800">Generator Modul Aplikasi</h1>
 
-    {{-- Notifikasi Sukses --}}
+    {{-- Notifikasi --}}
     @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success" role="alert">
             <strong>Sukses!</strong><br>
             {!! nl2br(e(session('success'))) !!}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
-    {{-- Notifikasi Error --}}
     @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger" role="alert">
             <strong>Terjadi Error:</strong>
-            <ul class="mb-0 ps-3">
+            <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
     <div class="card shadow mb-4">
-        <div class="card-header py-3 bg-success text-white">
-            <h6 class="m-0 fw-bold">Buat Modul Baru</h6>
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Buat Modul Baru</h6>
+            <a href="{{ route('master-data.index') }}" class="btn btn-sm btn-info">
+                <i class="fas fa-edit"></i> Buka Editor Data Master
+            </a>
         </div>
         <div class="card-body">
-
             <form action="{{ route('generator.generate') }}" method="POST">
                 @csrf
 
-                {{-- LANGKAH 1 --}}
+                {{-- LANGKAH 1: PILIH TIPE GENERATOR --}}
                 <div class="mb-4">
                     <label class="form-label fw-bold">1. Pilih Tipe Modul</label>
-                    <div class="form-check mb-2">
+                    <div class="form-check">
                         <input class="form-check-input" type="radio" name="generator_type" id="typeMaster" value="master" checked>
                         <label class="form-check-label" for="typeMaster">
-                            <strong>Generator Master (Kecil)</strong> - CRUD data referensi (contoh: Kecamatan, Jenis Tanaman, Periode).
+                            <strong>Generator Master</strong> - Untuk data referensi (Kecamatan, Jenis Tanaman, dll).
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="generator_type" id="typeTransactional" value="transactional">
                         <label class="form-check-label" for="typeTransactional">
-                            <strong>Generator Tabel Utama (Besar)</strong> - Data utama yang kompleks & terhubung ke master.
+                            <strong>Generator Tabel Utama</strong> - Untuk data kompleks yang terhubung ke data master.
                         </label>
                     </div>
                 </div>
 
                 <hr>
 
-                {{-- LANGKAH 2 --}}
+                {{-- LANGKAH 2: INFORMASI DASAR --}}
                 <div class="mb-3">
-                    <label for="dinasId" class="form-label fw-bold">2. Pilih Dinas Terkait</label>
+                    <label for="pageName" class="form-label fw-bold">2. Beri Nama Halaman / Modul</label>
+                    <input type="text" class="form-control" id="pageName" name="page_name" required placeholder="Contoh: Data Kecamatan atau Produksi Perkebunan">
+                </div>
+
+                <div class="mb-3">
+                    <label for="dinasId" class="form-label fw-bold">3. Pilih Dinas Terkait</label>
                     <select class="form-select" id="dinasId" name="dinas_id" required>
                         <option value="" disabled selected>-- Pilih salah satu dinas --</option>
                         @foreach ($dinas as $item)
@@ -66,95 +69,85 @@
                     </select>
                 </div>
 
-                {{-- LANGKAH 3 --}}
-                <div class="mb-3">
-                    <label for="pageName" class="form-label fw-bold">3. Nama Halaman</label>
-                    <input type="text" class="form-control" id="pageName" name="page_name" required placeholder="Contoh: Data Kecamatan">
-                    <div class="form-text">Nama ini digunakan untuk Model, Controller, dan View.</div>
-                </div>
-
                 <hr>
 
-                {{-- OPSI MASTER --}}
+                {{-- ========================================================== --}}
+                {{-- OPSI UNTUK GENERATOR MASTER --}}
+                {{-- ========================================================== --}}
                 <div id="master-options">
-                    <h5 class="fw-bold">4. Kolom Tabel Master</h5>
-                    <p class="small text-muted">Contoh: Tabel "Kecamatan" hanya memerlukan satu kolom `nama` (string).</p>
-                    <div id="kolom-container" class="mb-2">
-                        <div class="row g-3 align-items-end kolom-item">
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Kolom</label>
-                            <input type="text" name="columns[0][name]" class="form-control" placeholder="contoh: nama_kecamatan">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Tipe Data</label>
-                            <select name="columns[0][type]" class="form-select">
-                                <option value="string">Teks Singkat</option>
-                                <option value="text">Teks Panjang</option>
-                                <option value="integer">Angka Bulat</option>
-                                <option value="decimal">Angka Desimal</option>
-                                <option value="date">Tanggal</option>
-                                <option value="boolean">Ya/Tidak</option>
-                            </select>
+                    <h5 class="fw-bold">4. Definisikan Kolom Tabel Master</h5>
+                    <p class="text-muted small">Generator ini hanya akan membuat Tabel Database dan Model-nya. Untuk mengisi dan mengedit data, gunakan "Editor Data Master".</p>
+                    <div id="kolom-container">
+                        <div class="row align-items-end mb-3 kolom-item">
+                            <div class="col-md-5">
+                                <label class="form-label">Nama Kolom</label>
+                                <input type="text" name="columns[0][name]" class="form-control" placeholder="contoh: nama_kecamatan">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Tipe Data</label>
+                                <select name="columns[0][type]" class="form-select">
+                                    <option value="string">Teks Singkat (string)</option>
+                                    <option value="text">Teks Panjang (text)</option>
+                                    <option value="integer">Angka Bulat (integer)</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-
-                    </div>
-                    <button type="button" id="tambah-kolom" class="btn btn-success btn-sm">+ Tambah Kolom</button>
+                    <button type="button" id="tambah-kolom" class="btn btn-success btn-sm mt-2">+ Tambah Kolom</button>
                 </div>
 
-                {{-- OPSI TRANSAKSIONAL --}}
+                {{-- ========================================================== --}}
+                {{-- OPSI UNTUK GENERATOR TABEL UTAMA --}}
+                {{-- ========================================================== --}}
                 <div id="transactional-options" style="display: none;">
-                    <h5 class="fw-bold">4. Hubungkan ke Tabel Master</h5>
-                    <p class="small text-muted">Contoh: Produksi Perkebunan terhubung ke `kecamatans`, `periodes`, `jenis_tanamans`.</p>
-                    <div id="relasi-container" class="mb-2">
-                        <div class="row g-3 align-items-end relasi-item">
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Relasi</label>
-                            <input type="text" name="relations[0][name]" class="form-control" placeholder="contoh: kecamatan">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Tabel Master</label>
-                            <select name="relations[0][references]" class="form-select">
-                                <option value="">-- Pilih Tabel Tujuan --</option>
-                                @foreach ($tables as $table)
-                                    <option value="{{ $table }}">{{ $table }}</option>
-                                @endforeach
-                            </select>
+                    <h5 class="fw-bold">4. Hubungkan ke Tabel Master (Dimensi)</h5>
+                     <div class="alert alert-light small p-2">
+                        Pastikan data master (seperti daftar kecamatan) sudah Anda isi terlebih dahulu menggunakan <strong>Editor Data Master</strong>.
+                    </div>
+                    <div id="relasi-container">
+                        <div class="row align-items-end mb-3 relasi-item">
+                            <div class="col-md-5">
+                                <label class="form-label">Nama Relasi</label>
+                                <input type="text" name="relations[0][name]" class="form-control" placeholder="contoh: kecamatan">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Terhubung ke Tabel</label>
+                                <select name="relations[0][references]" class="form-select">
+                                    <option value="">-- Pilih Tabel Tujuan --</option>
+                                    @foreach ($tables as $table)
+                                        <option value="{{ $table }}">{{ $table }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                    <button type="button" id="tambah-relasi" class="btn btn-success btn-sm">+ Tambah Relasi</button>
+                    <button type="button" id="tambah-relasi" class="btn btn-info btn-sm mt-2">+ Tambah Relasi</button>
                     
                     <hr class="my-4">
 
-                    <h5 class="fw-bold">5. Kolom Nilai</h5>
-                    <p class="small text-muted">Contoh: `jumlah_produksi` (decimal).</p>
-                    <div id="nilai-container" class="mb-2">
-                        <div class="row g-3 align-items-end">
-                        <div class="col-md-6">
-                            <label class="form-label">Nama Kolom Nilai</label>
-                            <input type="text" name="value_columns[0][name]" class="form-control" placeholder="contoh: jumlah_produksi">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Tipe Data</label>
-                            <select name="value_columns[0][type]" class="form-select">
-                                <option value="decimal">Angka Desimal</option>
-                                <option value="integer">Angka Bulat</option>
-                                <option value="string">Teks Singkat</option>
-                                <option value="text">Teks Panjang</option>
-                            </select>
+                    <h5 class="fw-bold">5. Definisikan Kolom Nilai</h5>
+                    <div id="nilai-container">
+                        <div class="row align-items-end mb-3 nilai-item">
+                            <div class="col-md-5">
+                                <label class="form-label">Nama Kolom Nilai</label>
+                                <input type="text" name="value_columns[0][name]" class="form-control" placeholder="contoh: jumlah_produksi">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Tipe Data</label>
+                                <select name="value_columns[0][type]" class="form-select">
+                                    <option value="decimal">Angka Desimal (decimal)</option>
+                                    <option value="integer">Angka Bulat (integer)</option>
+                                    <option value="string">Teks Singkat (string)</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    </div>
+                    <button type="button" id="tambah-nilai" class="btn btn-success btn-sm mt-2">+ Tambah Kolom Nilai</button>
                 </div>
 
                 <hr>
-                
-                <div class="text-end">
-                    <button type="submit" class="btn btn-primary">Buat Modul</button>
-                </div>
+                <button type="submit" class="btn btn-primary">Buat Modul Sekarang</button>
             </form>
-
         </div>
     </div>
 </div>
@@ -166,83 +159,73 @@ document.addEventListener("DOMContentLoaded", function() {
     const masterOptionsDiv = document.getElementById('master-options');
     const transactionalOptionsDiv = document.getElementById('transactional-options');
 
-    // Fungsi untuk menampilkan/menyembunyikan form
     function toggleGeneratorOptions() {
-        if (typeMasterRadio.checked) {
-            masterOptionsDiv.style.display = 'block';
-            transactionalOptionsDiv.style.display = 'none';
-            // Aktifkan input master, non-aktifkan input transaksional
-            masterOptionsDiv.querySelectorAll('input, select').forEach(el => el.disabled = false);
-            transactionalOptionsDiv.querySelectorAll('input, select').forEach(el => el.disabled = true);
-        } else {
-            masterOptionsDiv.style.display = 'none';
-            transactionalOptionsDiv.style.display = 'block';
-            // Aktifkan input transaksional, non-aktifkan input master
-            masterOptionsDiv.querySelectorAll('input, select').forEach(el => el.disabled = true);
-            transactionalOptionsDiv.querySelectorAll('input, select').forEach(el => el.disabled = false);
-        }
+        const isMaster = typeMasterRadio.checked;
+        masterOptionsDiv.style.display = isMaster ? 'block' : 'none';
+        transactionalOptionsDiv.style.display = isMaster ? 'none' : 'block';
+        masterOptionsDiv.querySelectorAll('input, select').forEach(el => el.disabled = !isMaster);
+        transactionalOptionsDiv.querySelectorAll('input, select').forEach(el => el.disabled = isMaster);
     }
 
-    // Panggil fungsi saat halaman dimuat
     toggleGeneratorOptions();
-
-    // Tambahkan event listener ke radio button
     typeMasterRadio.addEventListener('change', toggleGeneratorOptions);
     typeTransactionalRadio.addEventListener('change', toggleGeneratorOptions);
     
-    // ==========================================================
-    // SCRIPT UNTUK GENERATOR MASTER (KECIL)
-    // ==========================================================
+    // --- Logika Tambah/Hapus Dinamis ---
     let kolomIndex = 1;
     document.getElementById('tambah-kolom').addEventListener('click', function() {
         const container = document.getElementById('kolom-container');
         const newItem = document.createElement('div');
-        newItem.classList.add('row', 'align-items-end', 'mb-3', 'kolom-item');
+        newItem.className = 'row align-items-end mb-3 kolom-item';
         newItem.innerHTML = `
-            <div class="col-md-5">
-                <input type="text" name="columns[${kolomIndex}][name]" class="form-control" placeholder="Nama kolom baru">
-            </div>
+            <div class="col-md-5"><input type="text" name="columns[${kolomIndex}][name]" class="form-control" placeholder="Nama kolom baru"></div>
             <div class="col-md-5">
                 <select name="columns[${kolomIndex}][type]" class="form-select">
                     <option value="string">Teks Singkat (string)</option>
                     <option value="text">Teks Panjang (text)</option>
                     <option value="integer">Angka Bulat (integer)</option>
-                    <option value="decimal">Angka Desimal (decimal)</option>
-                    <option value="date">Tanggal (date)</option>
-                    <option value="boolean">Ya/Tidak (boolean)</option>
                 </select>
             </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-danger remove-item">Hapus</button>
-            </div>`;
+            <div class="col-md-2"><button type="button" class="btn btn-danger remove-item">Hapus</button></div>`;
         container.appendChild(newItem);
         kolomIndex++;
     });
 
-    // ==========================================================
-    // SCRIPT UNTUK GENERATOR TABEL UTAMA (BESAR)
-    // ==========================================================
     let relasiIndex = 1;
     document.getElementById('tambah-relasi').addEventListener('click', function() {
         const container = document.getElementById('relasi-container');
         const newItem = document.createElement('div');
-        newItem.classList.add('row', 'align-items-end', 'mb-3', 'relasi-item');
+        newItem.className = 'row align-items-end mb-3 relasi-item';
         const selectOptions = `@foreach ($tables as $table)<option value="{{ $table }}">{{ $table }}</option>@endforeach`;
         newItem.innerHTML = `
-            <div class="col-md-5">
-                <input type="text" name="relations[${relasiIndex}][name]" class="form-control" placeholder="contoh: periode">
-            </div>
+            <div class="col-md-5"><input type="text" name="relations[${relasiIndex}][name]" class="form-control" placeholder="contoh: periode"></div>
             <div class="col-md-5">
                 <select name="relations[${relasiIndex}][references]" class="form-select">
-                    <option value="">-- Pilih Tabel Tujuan --</option>
-                    ${selectOptions}
+                    <option value="">-- Pilih Tabel Tujuan --</option>${selectOptions}
                 </select>
             </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-danger remove-item">Hapus</button>
-            </div>`;
+            <div class="col-md-2"><button type="button" class="btn btn-danger remove-item">Hapus</button></div>`;
         container.appendChild(newItem);
         relasiIndex++;
+    });
+
+    let nilaiIndex = 1;
+    document.getElementById('tambah-nilai').addEventListener('click', function() {
+        const container = document.getElementById('nilai-container');
+        const newItem = document.createElement('div');
+        newItem.className = 'row align-items-end mb-3 nilai-item';
+        newItem.innerHTML = `
+            <div class="col-md-5"><input type="text" name="value_columns[${nilaiIndex}][name]" class="form-control" placeholder="Nama kolom nilai baru"></div>
+            <div class="col-md-5">
+                <select name="value_columns[${nilaiIndex}][type]" class="form-select">
+                    <option value="decimal">Angka Desimal (decimal)</option>
+                    <option value="integer">Angka Bulat (integer)</option>
+                    <option value="string">Teks Singkat (string)</option>
+                </select>
+            </div>
+            <div class="col-md-2"><button type="button" class="btn btn-danger remove-item">Hapus</button></div>`;
+        container.appendChild(newItem);
+        nilaiIndex++;
     });
 
     // Event listener umum untuk tombol hapus

@@ -3,10 +3,6 @@
 @section('content')
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800">Tabel {{title}}</h1>
-    <p class="mb-4">Manajemen data untuk {{title}}.</p>
-    
-    {{-- TODO: Tambahkan form filter di sini --}}
-
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <a href="{{ route('{{routeName}}.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah Data</a>
@@ -43,4 +39,4 @@
         </div>
     </div>
 </div>
-@endsection 
+@endsection
