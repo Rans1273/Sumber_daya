@@ -1,0 +1,26 @@
+@extends('layouts.dashboard_layout')
+
+@section('content')
+<div class="container-fluid">
+    {{-- Judul dinamis: "Tambah" atau "Edit" --}}
+    <h1 class="h3 mb-2 text-gray-800">{{ '{{ $data->id ?? false ? "Edit" : "Tambah" }}' }} Data {{title}}</h1>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            {{-- Action form dinamis: mengarah ke 'store' atau 'update' --}}
+            <form action="{{ '{{ $data->id ?? false ? route("' . $routeName . '.update", $data->id) : route("' . $routeName . '.store") }}' }}" method="POST">
+                @csrf
+                {{-- Method spoofing untuk form edit --}}
+                @if('{{ $data->id ?? false }}')
+                    @method('PUT')
+                @endif
+
+                {!! $formFields !!}
+                
+                <hr>
+                <button type="submit" class="btn btn-primary">{{ '{{ $data->id ?? false ? "Update" : "Simpan" }}' }}</button>
+                <a href="{{ '{{ route("' . $routeName . '.index") }}' }}" class="btn btn-secondary">Batal</a>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection

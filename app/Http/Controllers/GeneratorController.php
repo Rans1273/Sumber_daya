@@ -45,18 +45,11 @@ class GeneratorController extends Controller
         try {
             // Logika untuk Generator Master
             if ($type === 'master') {
-                $request->validate([
-                    'columns' => 'required|array|min:1',
-                    'columns.*.name' => 'required|string|regex:/^[a-zA-Z0-9_]+$/',
-                ]);
-                
+                $request->validate([ 'columns' => 'required|array|min:1' ]);
                 $this->createAndRunMigration($tableName, $request->columns, []);
                 $this->createModel($modelName, $tableName, $request->columns, []);
-
-                $successMessage = "Generator Master berhasil dijalankan:<br>" .
-                                  "1. Tabel '{$tableName}' berhasil dibuat.<br>" .
-                                  "2. Model '{$modelName}.php' berhasil dibuat.";
-
+                $successMessage = "Generator Master berhasil: Tabel '{$tableName}' dan Model '{$modelName}.php' dibuat.";
+            
             // Logika untuk Generator Tabel Utama
             } else { // transactional
                 $request->validate([
@@ -79,12 +72,7 @@ class GeneratorController extends Controller
                 $this->createViewsForTransactional($dinasFolderName, $viewFileName, $pageName, $routeName, $columns, $relations);
                 $this->addRoute($routeName, $controllerName);
                 
-                $successMessage = "Generator Tabel Utama berhasil dijalankan:<br>" .
-                                  "1. Tabel '{$tableName}' dibuat.<br>" .
-                                  "2. Model '{$modelName}.php' dibuat.<br>" .
-                                  "3. Controller '{$controllerName}.php' dibuat.<br>" .
-                                  "4. Views (index, create, edit) dibuat.<br>" .
-                                  "5. Route '{$routeName}' ditambahkan.";
+                $successMessage = "Generator Tabel Utama berhasil dijalankan untuk '{$pageName}'.";
             }
 
         } catch (Exception $e) {
@@ -101,7 +89,6 @@ class GeneratorController extends Controller
     {
         $className = 'Create' . Str::studly($tableName) . 'Table';
         $migrationFileName = date('Y_m_d_His') . '_create_' . $tableName . '_table.php';
-        
         $fields = "            \$table->id();\n";
         foreach ($relations as $relation) {
             $foreignTableName = $relation['references'];
@@ -112,10 +99,8 @@ class GeneratorController extends Controller
             $fields .= "            \$table->{$column['type']}('" . Str::snake($column['name']) . "')->nullable();\n";
         }
         $fields .= "            \$table->timestamps();";
-
         $template = file_get_contents(app_path('Generators/stubs/migration.create.stub'));
         $content = str_replace(['{{className}}', '{{tableName}}', '{{fields}}'], [$className, $tableName, $fields], $template);
-        
         File::put(database_path('migrations/' . $migrationFileName), $content);
         Artisan::call('migrate', ['--path' => 'database/migrations/'.$migrationFileName]);
     }
@@ -126,14 +111,12 @@ class GeneratorController extends Controller
         foreach ($relations as $relation) {
             $fillable->push("'" . Str::snake(Str::singular($relation['references'])) . "_id'");
         }
-
         $relationMethods = '';
         foreach ($relations as $relation) {
             $relationName = $relation['name'];
             $relatedModel = Str::studly(Str::singular($relation['references']));
             $relationMethods .= "\n    public function {$relationName}()\n    {\n        return \$this->belongsTo({$relatedModel}::class);\n    }\n";
         }
-        
         $template = file_get_contents(app_path('Generators/stubs/model.stub'));
         $content = str_replace(
             ['{{modelName}}', '{{tableName}}', '{{fillable}}', '{{relationMethods}}'],
@@ -150,7 +133,6 @@ class GeneratorController extends Controller
         $withRelations = [];
         $compactsForForms = [];
         $formVariables = "";
-
         foreach ($relations as $relation) {
             $relatedModel = Str::studly(Str::singular($relation['references']));
             $variableName = Str::plural($relation['name']);
@@ -159,7 +141,6 @@ class GeneratorController extends Controller
             $compactsForForms[] = "'$variableName'";
             $formVariables .= "        \${$variableName} = {$relatedModel}::orderBy('nama')->get();\n";
         }
-
         $content = str_replace(
             ['{{controllerName}}', '{{modelName}}', '{{useStatements}}', '{{viewPath}}', '{{routeName}}', '{{withRelations}}', '{{compactsForForms}}', '{{formVariables}}'],
             [$controllerName, $modelName, $useStatements, $dinasFolderName . '.' . $viewFileName, $routeName, implode(', ', $withRelations), implode(', ', $compactsForForms), $formVariables],
@@ -172,7 +153,6 @@ class GeneratorController extends Controller
     {
         $viewFolderPath = resource_path('views/' . $dinasFolderName);
         if (!File::isDirectory($viewFolderPath)) File::makeDirectory($viewFolderPath, 0755, true, true);
-
         $this->createIndexView($viewFolderPath, $viewFileName, $pageName, $routeName, $columns, $relations);
         $this->createFormView($viewFolderPath, $viewFileName, $pageName, $routeName, $columns, $relations, 'create');
         $this->createFormView($viewFolderPath, $viewFileName, $pageName, $routeName, $columns, $relations, 'edit');
@@ -184,7 +164,6 @@ class GeneratorController extends Controller
         $title = Str::title($pageName);
         $tableHeaders = "<th>No</th>\n";
         $tableBody = "<td>{{ \$loop->iteration }}</td>\n";
-
         foreach ($relations as $relation) {
             $tableHeaders .= "               <th>" . Str::title($relation['name']) . "</th>\n";
             $tableBody .= "                  <td>{{ \$record->{$relation['name']}->nama ?? '-' }}</td>\n";
@@ -194,7 +173,6 @@ class GeneratorController extends Controller
             $tableBody .= "                  <td>{{ \$record->" . Str::snake($column['name']) . " }}</td>\n";
         }
         $tableHeaders .= "               <th>Aksi</th>";
-        
         $content = str_replace(
             ['{{title}}', '{{tableHeaders}}', '{{tableBody}}', '{{colspan}}', '{{routeName}}'],
             [$title, $tableHeaders, $tableBody, count($columns) + count($relations) + 2, $routeName],
@@ -205,24 +183,22 @@ class GeneratorController extends Controller
 
     private function createFormView($viewFolderPath, $viewFileName, $pageName, $routeName, $columns, $relations, $mode = 'create')
     {
-        $stubFile = 'view.transactional.form.stub';
-        $template = file_get_contents(app_path("Generators/stubs/{$stubFile}"));
+        $template = file_get_contents(app_path("Generators/stubs/view.transactional.form.stub"));
         $title = Str::title($pageName);
         $formFields = "";
-
         foreach ($relations as $relation) {
             $relationName = $relation['name'];
             $variableName = Str::plural($relationName);
             $foreignKey = Str::snake(Str::singular($relation['references'])) . '_id';
+            $displayColumn = $relation['display_column']; // Mengambil kolom display dari request
             $selected = $mode === 'edit' ? "{{ \$data->{$foreignKey} == \${$relationName}->id ? 'selected' : '' }}" : '';
-            $formFields .= $this->generateDropdownField($foreignKey, $relationName, $variableName, $selected);
+            $formFields .= $this->generateDropdownField($foreignKey, $relationName, $variableName, $selected, $displayColumn);
         }
         foreach ($columns as $column) {
             $columnName = Str::snake($column['name']);
             $value = $mode === 'edit' ? "value=\"{{ old('{$columnName}', \$data->{$columnName}) }}\"" : "value=\"{{ old('{$columnName}') }}\"";
             $formFields .= $this->generateInputField($columnName, $column['type'], $value);
         }
-        
         $content = str_replace(
             ['{{title}}', '{{routeName}}', '{{formFields}}', '{{mode}}'],
             [$title, $routeName, $formFields, $mode],
@@ -230,14 +206,68 @@ class GeneratorController extends Controller
         );
         File::put($viewFolderPath . "/{$viewFileName}-{$mode}.blade.php", $content);
     }
+    
+    private function generateDropdownField($foreignKey, $relationName, $variableName, $selected, $displayColumn)
+    {
+        $label = Str::title($relationName);
+        // --- PERUBAHAN DI SINI ---
+        // Menggunakan {{ $relationName->{$displayColumn} }} untuk fleksibilitas
+        return "
+        <div class=\"mb-3\">
+            <label for=\"{$foreignKey}\" class=\"form-label\">{$label}</label>
+            <select class=\"form-select\" name=\"{$foreignKey}\" id=\"{$foreignKey}\" required>
+                <option value=\"\">-- Pilih {$label} --</option>
+                @foreach (\${$variableName} as \${$relationName})
+                    <option value=\"{{ \${$relationName}->id }}\" {$selected}>{{ \${$relationName}->{$displayColumn} }}</option>
+                @endforeach
+            </select>
+        </div>";
+    }
+    public function getColumns($table)
+        {
+            try {
+                if (!Schema::hasTable($table)) {
+                    return response()->json(['error' => 'Tabel tidak ditemukan'], 404);
+                }
+                $columns = Schema::getColumnListing($table);
+                return response()->json($columns);
+            } catch (Exception $e) {
+                return response()->json(['error' => $e->getMessage()], 500);
+            }
+        }
 
-    private function generateDropdownField($foreignKey, $relationName, $variableName, $selected) { /* ... */ return ""; }
-    private function generateInputField($columnName, $type, $value) { /* ... */ return ""; }
+    private function generateInputField($columnName, $type, $value) {
+        $label = Str::title(str_replace('_', ' ', $columnName));
+        $inputType = 'text';
+        if ($type === 'integer' || $type === 'decimal') $inputType = 'number';
+        if ($type === 'date') $inputType = 'date';
+        if ($type === 'text') return "<div class=\"mb-3\"><label for=\"{$columnName}\" class=\"form-label\">{$label}</label><textarea class=\"form-control\" id=\"{$columnName}\" name=\"{$columnName}\" rows=\"3\" required>{{ old('{$columnName}', \$data->{$columnName} ?? '') }}</textarea></div>";
+        return "
+        <div class=\"mb-3\">
+            <label for=\"{$columnName}\" class=\"form-label\">{$label}</label>
+            <input type=\"{$inputType}\" class=\"form-control\" id=\"{$columnName}\" name=\"{$columnName}\" {$value} required>
+        </div>";
+    }
 
+    /**
+     * Method untuk menambahkan Route ke web.php.
+     * VERSI BARU: Membuat rute secara eksplisit.
+     */
     private function addRoute($routeName, $controllerName)
     {
-        $route = "\n// Route untuk {$controllerName}\nRoute::resource('{$routeName}', App\\Http\\Controllers\\{$controllerName}::class);";
-        File::append(base_path('routes/web.php'), $route);
+        $controllerClass = "App\\Http\\Controllers\\{$controllerName}::class";
+        $routeContent = "
+// Rute untuk {$controllerName}
+Route::get('/{$routeName}', [{$controllerClass}, 'index'])->name('{$routeName}.index');
+Route::get('/{$routeName}/create', [{$controllerClass}, 'create'])->name('{$routeName}.create');
+Route::post('/{$routeName}', [{$controllerClass}, 'store'])->name('{$routeName}.store');
+Route::get('/{$routeName}/{id}/edit', [{$controllerClass}, 'edit'])->name('{$routeName}.edit');
+Route::put('/{$routeName}/{id}', [{$controllerClass}, 'update'])->name('{$routeName}.update');
+Route::delete('/{$routeName}/{id}', [{$controllerClass}, 'destroy'])->name('{$routeName}.destroy');
+// Catatan: Rute kustom seperti upload CSV atau destroy dengan parameter ganda
+// perlu ditambahkan secara manual di routes/web.php jika diperlukan.
+";
+        File::append(base_path('routes/web.php'), $routeContent);
     }
 
     private function cleanupFailedMigration($tableName)

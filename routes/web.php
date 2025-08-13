@@ -24,6 +24,8 @@ Route::get('/', function () {
 
 Route::get('/generator', [GeneratorController::class, 'showGeneratorForm'])->name('generator.show');
 Route::post('/generator', [GeneratorController::class, 'generate'])->name('generator.generate');
+Route::get('/generator/get-columns/{table}', [GeneratorController::class, 'getColumns'])->name('generator.getColumns');
+    
 
 // Rute untuk Editor Data Master (BARU)
 Route::prefix('master-data')->name('master-data.')->group(function () {
@@ -43,4 +45,5 @@ Route::post('/perkebunan/upload-csv', [PerkebunanController::class, 'uploadCSV']
 Route::get('/perkebunan/{id}/edit', [PerkebunanController::class, 'edit'])->name('perkebunan.edit');
 Route::put('/perkebunan/{id}', [PerkebunanController::class, 'update'])->name('perkebunan.update');
 Route::delete('/perkebunan/{kecamatan_id}/{periode_id}', [PerkebunanController::class, 'destroy'])->name('perkebunan.destroy');
+
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class {{className}} extends Migration
+class CreateBijisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class {{className}} extends Migration
      */
     public function up()
     {
-        Schema::create('{{tableName}}', function (Blueprint $table) {
-            {{fields}}
+        Schema::create('bijis', function (Blueprint $table) {
+                        $table->id();
+            $table->string('nama_biji')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,6 +27,6 @@ class {{className}} extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('{{tableName}}');
+        Schema::dropIfExists('bijis');
     }
 }

@@ -12,17 +12,13 @@ class MasterDataController extends Controller
 {
     /**
      * DAFTAR PUTIH (WHITELIST) TABEL MASTER
-     * -----------------------------------------------------------------
-     * PENTING: Setiap kali Anda membuat tabel master baru, tambahkan
-     * nama tabelnya ke dalam array ini agar bisa diedit.
-     * -----------------------------------------------------------------
      */
     private $allowedTables = [
         'dinas',
         'kecamatans',
         'jenis_tanamans',
         'periodes',
-        // 'nama_tabel_baru_anda',
+        'bijis',
     ];
 
     /**
@@ -30,7 +26,6 @@ class MasterDataController extends Controller
      */
     public function index(Request $request)
     {
-        // Selalu dapatkan daftar tabel master untuk dropdown
         $allTables = collect(DB::select('SHOW TABLES'))->map(fn($table) => reset($table));
         $masterTables = $allTables->filter(fn($table) => in_array($table, $this->allowedTables))->sort()->values();
 
@@ -41,20 +36,14 @@ class MasterDataController extends Controller
             'records' => [],
         ];
 
-        // Periksa apakah pengguna telah memilih tabel
         if ($request->has('table') && !empty($request->table)) {
             $selectedTable = $request->table;
-
             try {
-                // Dapatkan model dan data yang sesuai
                 $model = $this->getModelForTable($selectedTable);
-                
                 $dataForView['selectedTable'] = $selectedTable;
                 $dataForView['records'] = $model->orderBy('id')->get();
                 $dataForView['columns'] = $model->getFillable();
-
             } catch (Exception $e) {
-                // Jika terjadi error, kembali ke halaman index dengan pesan error
                 return redirect()->route('master-data.index')->withErrors($e->getMessage());
             }
         }
@@ -68,15 +57,18 @@ class MasterDataController extends Controller
     public function store(Request $request, $table)
     {
         try {
-            $modelClass = get_class($this->getModelForTable($table));
-            $model = new $modelClass;
+            $model = $this->getModelForTable($table);
+            $modelClass = get_class($model);
             
-            $data = $request->only($model->getFillable());
-            
-            // Validasi sederhana (asumsi semua tabel punya kolom 'nama')
-            $request->validate(['nama' => 'required|string|max:255']);
+            // --- VALIDASI DINAMIS ---
+            $rules = [];
+            foreach ($model->getFillable() as $column) {
+                $rules[$column] = 'required|string|max:255'; // Aturan dasar, bisa disesuaikan
+            }
+            $validatedData = $request->validate($rules);
+            // --- AKHIR VALIDASI DINAMIS ---
 
-            $modelClass::create($data);
+            $modelClass::create($validatedData);
 
             return redirect()->route('master-data.index', ['table' => $table])
                              ->with('success', 'Data berhasil ditambahkan.');
@@ -96,11 +88,15 @@ class MasterDataController extends Controller
             $model = $this->getModelForTable($table);
             $record = $model->findOrFail($id);
             
-            $data = $request->only($model->getFillable());
+            // --- VALIDASI DINAMIS ---
+            $rules = [];
+            foreach ($model->getFillable() as $column) {
+                $rules[$column] = 'required|string|max:255';
+            }
+            $validatedData = $request->validate($rules);
+            // --- AKHIR VALIDASI DINAMIS ---
 
-            $request->validate(['nama' => 'required|string|max:255']);
-
-            $record->update($data);
+            $record->update($validatedData);
 
             return redirect()->route('master-data.index', ['table' => $table])
                              ->with('success', 'Data berhasil diperbarui.');
@@ -138,18 +134,14 @@ class MasterDataController extends Controller
             throw new Exception("Akses ke tabel '{$table}' tidak diizinkan.");
         }
 
-        // Aturan standar Laravel
         $modelName = Str::studly(Str::singular($table));
-
-        // Pengecualian khusus untuk kasus 'dinas' -> 'dina'
         if (strtolower($table) === 'dinas') {
             $modelName = 'Dinas';
         }
-
         $modelClass = "App\\Models\\{$modelName}";
 
         if (!class_exists($modelClass)) {
-            throw new Exception("Model '{$modelName}' tidak ditemukan untuk tabel '{$table}'. Pastikan model sudah dibuat.");
+            throw new Exception("Model '{$modelName}' tidak ditemukan untuk tabel '{$table}'.");
         }
 
         return new $modelClass;
