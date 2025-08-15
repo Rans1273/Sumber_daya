@@ -54,13 +54,48 @@
         <div class="container">
             <h3 class="text-center mb-4">LAPORAN POPULER TERBARU</h3>
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-                <!-- Ulangi kartu ini -->
+                <a href="{{ route('perkebunan.index') }}" class="col text-decoration-none">
+                    <div class="card h-100 bg-secondary text-white">
+                        <img src="img/dinas/dpmptsp-prov.jpg" class="card-img-top" alt="" />
+                        <div class="card-body">
+                            <h5 class="card-title">DPMPTSP</h5>
+                            <p class="card-text">Provinsi Kalimantan Utara</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ route('perkebunan.index') }}" class="col text-decoration-none">
+                    <div class="card h-100 bg-secondary text-white">
+                        <img src="img/dinas/esdm-prov.png" class="card-img-top" alt="" />
+                        <div class="card-body">
+                            <h5 class="card-title">ESDM</h5>
+                            <p class="card-text">Provinsi Kalimantan Utara</p>
+                        </div>
+                    </div>
+                </a>
                 <a href="{{ route('perkebunan.index') }}" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/sumberdaya/perkebunan.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
-                            <h5 class="card-title">PERKEBUNAN BULUNGAN</h5>
-                            <p class="card-text">PERKEBUNAN DARI BULUNGAN</p>
+                            <h5 class="card-title">KEHUTANAN</h5>
+                            <p class="card-text">Provinsi Kalimantan Utara</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ route('perkebunan.index') }}" class="col text-decoration-none">
+                    <div class="card h-100 bg-secondary text-white">
+                        <img src="img/sumberdaya/perkebunan.jpg" class="card-img-top" alt="" />
+                        <div class="card-body">
+                            <h5 class="card-title">DPUPR</h5>
+                            <p class="card-text">KABUPATEN BULUNGAN</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ route('perkebunan.index') }}" class="col text-decoration-none">
+                    <div class="card h-100 bg-secondary text-white">
+                        <img src="img/sumberdaya/perkebunan.jpg" class="card-img-top" alt="" />
+                        <div class="card-body">
+                            <h5 class="card-title">DPMPTSP</h5>
+                            <p class="card-text">KABUPATEN BULUNGAN</p>
                         </div>
                     </div>
                 </a>
@@ -68,8 +103,8 @@
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/sumberdaya/sumber air.jpg" class="card-img-top" alt="" />
                         <div class="card-body ">
-                            <h5 class="card-title">EKONOMI BULUNGAN</h5>
-                            <p class="card-text">EKONOMI DARI BULUNGAN</p>
+                            <h5 class="card-title">PERTANIAN</h5>
+                            <p class="card-text">KABUPATEN BULUNGAN</p>
                         </div>
                     </div>
                 </a>
@@ -77,8 +112,8 @@
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/sumberdaya/tambang.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
-                            <h5 class="card-title">EKONOMI BULUNGAN</h5>
-                            <p class="card-text">EKONOMI DARI BULUNGAN</p>
+                            <h5 class="card-title">PERIKANAN</h5>
+                            <p class="card-text">KABUPATEN BULUNGAN</p>
                         </div>
                     </div>
                 </a>
@@ -86,8 +121,8 @@
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/sumberdaya/embung.jpeg" class="card-img-top" alt="" />
                         <div class="card-body">
-                            <h5 class="card-title">EKONOMI BULUNGAN</h5>
-                            <p class="card-text">EKONOMI DARI BULUNGAN</p>
+                            <h5 class="card-title">DISKOPERINDAG</h5>
+                            <p class="card-text">KABUPATEN BULUNGAN</p>
                         </div>
                     </div>
                 </a>
@@ -95,8 +130,8 @@
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/sumberdaya/kayu_bulat.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
-                            <h5 class="card-title">EKONOMI BULUNGAN</h5>
-                            <p class="card-text">EKONOMI DARI BULUNGAN</p>
+                            <h5 class="card-title">KETAHANAN PANGAN</h5>
+                            <p class="card-text">KABUPATEN BULUNGAN</p>
                         </div>
                     </div>
                 </a>
@@ -104,8 +139,8 @@
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/sumberdaya/produksi_susu.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
-                            <h5 class="card-title">EKONOMI BULUNGAN</h5>
-                            <p class="card-text">EKONOMI DARI BULUNGAN</p>
+                            <h5 class="card-title">TRANSMIGRASI & TENAGA KERJA</h5>
+                            <p class="card-text">KABUPATEN BULUNGAN</p>
                         </div>
                     </div>
                 </a>
@@ -113,8 +148,8 @@
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/sumberdaya/hewan_unggas.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
-                            <h5 class="card-title">EKONOMI BULUNGAN</h5>
-                            <p class="card-text">EKONOMI DARI BULUNGAN</p>
+                            <h5 class="card-title">PEMUDA OLAHRAGA & PARIWISATA</h5>
+                            <p class="card-text">KABUPATEN BULUNGAN</p>
                         </div>
                     </div>
                 </a>
@@ -122,12 +157,11 @@
                     <div class="card h-100 bg-secondary text-white">
                         <img src="img/sumberdaya/produksi_daging.jpg" class="card-img-top" alt="" />
                         <div class="card-body">
-                            <h5 class="card-title">EKONOMI BULUNGAN</h5>
-                            <p class="card-text">EKONOMI DARI BULUNGAN</p>
+                            <h5 class="card-title">LINGKUNGAN HIDUP</h5>
+                            <p class="card-text">KABUPATEN BULUNGAN</p>
                         </div>
                     </div>
                 </a>
-                <!------->
             </div>
             <div class="text-center mt-4">
                 <button class="btn btn-outline-light">Lihat Semua Laporan</button>
@@ -153,7 +187,6 @@
             </div>
         </div>
     </section>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

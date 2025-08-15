@@ -11,29 +11,28 @@
             --sidebar-width: 260px;
             --sidebar-collapsed-width: 0px;
             --transition-speed: 350ms;
-            --navbar-height: 56px; /* DITAMBAHKAN: variabel untuk tinggi navbar */
+            --navbar-height: 56px;
         }
 
-        /* layout wrapper - Dihapus display:flex agar tidak mengontrol tinggi sidebar */
         .layout {
-            padding-left: var(--sidebar-width); /* DITAMBAHKAN: Mendorong layout utama ke kanan */
-            transition: padding-left var(--transition-speed) cubic-bezier(.2,.8,.2,1); /* DITAMBAHKAN: transisi halus */
+            padding-left: var(--sidebar-width);
+            transition: padding-left var(--transition-speed) cubic-bezier(.2,.8,.2,1); 
         }
 
-        /* SIDEBAR */
         .sidebar {
-            position: fixed; /* DIUBAH: Membuat sidebar tetap di posisi yang sama saat di-scroll */
-            top: var(--navbar-height); /* DIUBAH: Posisi di bawah navbar */
+            position: fixed;
+            top: var(--navbar-height);
             left: 0;
             bottom: 0;
             width: var(--sidebar-width);
             background: #0b0b0b;
             transition: width var(--transition-speed) cubic-bezier(.2,.8,.2,1);
             border-right: 1px solid rgba(255,255,255,0.08);
-            overflow-y: auto; /* DIUBAH: Mengizinkan scroll vertikal jika konten melebihi tinggi */
-            overflow-x: hidden; /* DIUBAH: Mencegah scroll horizontal */
-            z-index: 1020; /* DITAMBAHKAN: Memastikan sidebar di atas konten lain */
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 1020;
         }
+
         .sidebar .sidebar-inner {
             padding: 1.25rem;
             height: 100%;
@@ -42,26 +41,26 @@
             transition: opacity 200ms;
         }
 
-        /* collapsed state (applied on body) */
         body.collapsed-sidebar {
             --sidebar-width: var(--sidebar-collapsed-width);
         }
+
         body.collapsed-sidebar .layout {
-            padding-left: var(--sidebar-collapsed-width); /* DITAMBAHKAN: Menyesuaikan padding saat sidebar ditutup */
+            padding-left: var(--sidebar-collapsed-width); 
         }
+
         body.collapsed-sidebar .sidebar .sidebar-inner {
             opacity: 0;
             pointer-events: none;
         }
 
-        /* Main content - Dihapus properti flex */
         .main {
-            /* flex: 1 1 auto; -> Dihapus */
             transition: all var(--transition-speed) cubic-bezier(.2,.8,.2,1);
             min-width: 0;
             background: transparent;
+            min-height: 90vh;
         }
-        /* inner wrapper to center and constrain content */
+
         .main-inner {
             max-width: 1200px;
             margin: 28px auto;
@@ -69,7 +68,6 @@
             transition: margin var(--transition-speed);
         }
 
-        /* Hamburger button (Tidak ada perubahan) */
         .hamburger {
             width: 42px;
             height: 34px;
@@ -81,6 +79,7 @@
             padding: 0;
             margin-right: 8px;
         }
+
         .hamburger .bar {
             display: block;
             width: 22px;
@@ -89,6 +88,7 @@
             position: relative;
             transition: transform 0.25s ease, opacity 0.25s ease;
         }
+
         .hamburger .bar::before,
         .hamburger .bar::after {
             content: "";
@@ -99,45 +99,56 @@
             background: #ffffff;
             transition: transform 0.25s ease, top 0.25s ease, bottom 0.25s ease;
         }
-        .hamburger .bar::before { top: -7px; }
-        .hamburger .bar::after  { bottom: -7px; }
+
+        .hamburger .bar::before { 
+            top: -7px; 
+        }
+
+        .hamburger .bar::after  { 
+            bottom: -7px; 
+        }
+
         .hamburger.open .bar {
             background: transparent;
         }
+
         .hamburger.open .bar::before{
             transform: translateY(7px) rotate(45deg);
         }
+
         .hamburger.open .bar::after{
             transform: translateY(-7px) rotate(-45deg);
         }
 
-        /* small screens: sidebar becomes overlay */
         @media (max-width: 767.98px) {
-            /* DIUBAH: Menghilangkan padding pada layout di mobile */
             .layout {
                 padding-left: 0;
             }
+
             .sidebar {
-                top: 56px; /* navbar height */
+                top: 56px;
                 z-index: 1045;
                 transform: translateX(-100%);
-                /* width diatur kembali ke nilai non-variabel agar tidak terpengaruh state desktop */
                 width: 260px; 
                 transition: transform var(--transition-speed) cubic-bezier(.2,.8,.2,1);
             }
+
             body.show-mobile-sidebar .sidebar {
                 transform: translateX(0);
             }
+
             body.collapsed-sidebar .sidebar {
                 transform: translateX(-100%);
             }
+
             .main {
-                /* Tidak perlu properti lagi di sini karena .layout sudah direset */
+                
             }
-            /* dim overlay when sidebar open on mobile */
+
             .mobile-overlay {
                 display: none;
             }
+
             body.show-mobile-sidebar .mobile-overlay {
                 display: block;
                 position: fixed;
@@ -148,9 +159,14 @@
             }
         }
 
-        /* tweak sidebar scrollbar look (Tidak ada perubahan) */
-        .sidebar::-webkit-scrollbar{ width:8px; }
-        .sidebar::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.06); border-radius:6px; }
+        .sidebar::-webkit-scrollbar{ 
+            width:8px; 
+        }
+
+        .sidebar::-webkit-scrollbar-thumb{ 
+            background: rgba(255,255,255,0.06); 
+            border-radius:6px; 
+        }
     </style>
 </head>
 
@@ -186,7 +202,7 @@
                         <button
                             class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                             data-bs-toggle="collapse" data-bs-target="#DPMPTSP" aria-expanded="false">
-                            Kepala DPMPTSP Provinsi Kalimantan Utara di Tanjung Selor
+                            DPMPTSP Provinsi Kalimantan Utara di Tanjung Selor
                         </button>
                         <div class="collapse ps-3" id="DPMPTSP">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -198,7 +214,7 @@
                         <button
                             class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                             data-bs-toggle="collapse" data-bs-target="#ESDM" aria-expanded="false">
-                            Kepala ESDM Provinsi Kalimantan Utara di Tanjung Selor
+                            ESDM Provinsi Kalimantan Utara di Tanjung Selor
                         </button>
                         <div class="collapse ps-3" id="ESDM">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -210,7 +226,7 @@
                         <button
                             class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                             data-bs-toggle="collapse" data-bs-target="#KEHUTANAN" aria-expanded="false">
-                            Kepala Dinas Kehutanan Provinsi Kalimantan Utara di Tanjung Selor
+                            Dinas Kehutanan Provinsi Kalimantan Utara di Tanjung Selor
                         </button>
                         <div class="collapse ps-3" id="KEHUTANAN">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -222,7 +238,7 @@
                         <button
                             class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                             data-bs-toggle="collapse" data-bs-target="#PUPR" aria-expanded="false">
-                            Kepala DPUPR Kabupaten Bulungan di Tanjung Selor
+                            DPUPR Kabupaten Bulungan di Tanjung Selor
                         </button>
                         <div class="collapse ps-3" id="PUPR">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -234,7 +250,7 @@
                         <button
                             class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                             data-bs-toggle="collapse" data-bs-target="#DPMPTSPKab" aria-expanded="false">
-                            Kepala DPMPTSP Kabupaten Bulungan di Tanjung Selor
+                            DPMPTSP Kabupaten Bulungan di Tanjung Selor
                         </button>
                         <div class="collapse ps-3" id="DPMPTSPKab">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -246,7 +262,7 @@
                         <button
                             class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                             data-bs-toggle="collapse" data-bs-target="#PERTANIAN" aria-expanded="false">
-                            Kepala Dinas Pertanian Kabupaten Bulungan di Tanjung Selor
+                            Dinas Pertanian Kabupaten Bulungan di Tanjung Selor
                         </button>
                         <div class="collapse ps-3" id="PERTANIAN">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -258,7 +274,7 @@
                         <button
                             class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                             data-bs-toggle="collapse" data-bs-target="#PERIKANAN" aria-expanded="false">
-                            Kepala Dinas Perikanan Kabupaten Bulungan di Tanjung Selor
+                            Dinas Perikanan Kabupaten Bulungan di Tanjung Selor
                         </button>
                         <div class="collapse ps-3" id="PERIKANAN">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -270,7 +286,7 @@
                         <button
                             class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                             data-bs-toggle="collapse" data-bs-target="#DISKOPERINDAG" aria-expanded="false">
-                            Kepala DISKOPERINDAG Kabupaten Bulungan di Tanjung Selor
+                            DISKOPERINDAG Kabupaten Bulungan di Tanjung Selor
                         </button>
                         <div class="collapse ps-3" id="DISKOPERINDAG">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -282,7 +298,7 @@
                         <button
                             class="btn btn-toggle align-items-center rounded collapsed text-white w-100 text-start"
                             data-bs-toggle="collapse" data-bs-target="#PANGAN" aria-expanded="false">
-                            Kepala Dinas Ketahanan Pangan Kabupaten Bulungan di Tanjung Selor
+                            Dinas Ketahanan Pangan Kabupaten Bulungan di Tanjung Selor
                         </button>
                         <div class="collapse ps-3" id="PANGAN">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -311,7 +327,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // TIDAK ADA PERUBAHAN PADA SCRIPT
         (function(){
             const body = document.body;
             const btn = document.getElementById('btnToggle');
@@ -320,7 +335,6 @@
 
             function isMobile(){ return mq.matches; }
 
-            // Toggle sidebar
             function toggleSidebar(){
                 if(isMobile()){
                     body.classList.toggle('show-mobile-sidebar');
@@ -335,7 +349,6 @@
                 }
             }
 
-            // Close mobile sidebar when clicking overlay
             mobileOverlay.addEventListener('click', () => {
                 body.classList.remove('show-mobile-sidebar');
                 mobileOverlay.style.display = 'none';
@@ -344,26 +357,21 @@
             
             btn.addEventListener('click', toggleSidebar);
 
-            // Sync state on resize
             mq.addListener((e) => {
-                if(!e.matches){ // switched to desktop
+                if(!e.matches){
                     body.classList.remove('show-mobile-sidebar');
                     mobileOverlay.style.display = 'none';
-                    // Sync hamburger state based on desktop sidebar visibility
                     btn.classList.toggle('open', !body.classList.contains('collapsed-sidebar'));
-                } else { // switched to mobile
+                } else { 
                     body.classList.remove('collapsed-sidebar');
-                    // Hamburger should be closed by default on mobile
                     btn.classList.remove('open');
                 }
             });
 
-            // Initial state check
             function setInitialState(){
                 if (isMobile()) {
                     btn.classList.remove('open');
                 } else {
-                    // Start desktop with sidebar visible
                     btn.classList.add('open');
                 }
             }
