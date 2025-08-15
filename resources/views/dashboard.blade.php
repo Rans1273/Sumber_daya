@@ -65,7 +65,7 @@
                 </a>
                 <a href="{{ route('perkebunan.index') }}" class="col text-decoration-none">
                     <div class="card h-100 bg-secondary text-white">
-                        <img src="img/dinas/esdm-prov.png" class="card-img-top" alt="" />
+                        <img src="img/dinas/esdm-prov.png" class="card-img-top" alt=""/>
                         <div class="card-body">
                             <h5 class="card-title">ESDM</h5>
                             <p class="card-text">Provinsi Kalimantan Utara</p>
